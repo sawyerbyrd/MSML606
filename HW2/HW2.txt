@@ -1,0 +1,36 @@
+Sawyer Byrd
+MSML606 - HW2
+
+*Disclaimer: I did not use any AI assistance on this assignment. I used results from searching google
+            to find what errors there were for me to throw but that was the extent of my outside help.
+
+*Note: Within the definition of evaluatePostFix(), I had to add 'self' to it's arguments because the 
+        tests expected it ("result = s.evaluatePostfix(expr)").
+
+Part I:
+
+Problem 4:
+
+- If the postfix expression is empty then it will skip the loop and go straight to "return stack.pop()".
+    Within stack.pop(), if the stack is empty (Which it would be if the expression is empty) it will
+    raise an IndexError saying "The stack is empty".
+
+- For malformed expressions:
+    Insufficient operrands are handled within stack.pop() if there are not enough operands in the stack,
+    stack.pop() will raise an IndexError saying the stack is empty.
+
+    Too many operands are handled at the end of the evaluatePostFix() function by checking to make sure
+    there is only one item left on the stack (after the loop and before returning).
+    If the loop and expression were correct, there should only be one item left on the stack at the end.
+
+- Division by zero is handled while performing operations by checking if the right node is 0 and
+    raising a ZeroDivisionError
+
+- Invalid tokens are handled on a node by node basis within the loop. This is done by checking
+    whether the token is a digit (pos or neg) and if not, checking that it is one of the valid 
+    operators (['+', '-', '*', '/']).
+
+- Very large numbers or results are just handled by using the 'int' datatype default
+
+- negative numbers are checked when checking weather the token is a digit. It checks if the expression
+    starts with '-' AND is followed by digits.
